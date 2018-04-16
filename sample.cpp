@@ -4,8 +4,12 @@
 #include <experimental/coroutine>
 #include <boost/lexical_cast.hpp>
 
+int x = 0;
+
 std::optional<int> foo() {
-   return 3;
+   return []() {
+      return x++;
+   }();
 }
 
 int main() {

@@ -15,4 +15,6 @@ RUN cd /tmp/boost \
       && ./b2 toolset=clang cxxflags="-stdlib=libc++" linkflags="-stdlib=libc++" stage \
       && ./b2 toolset=clang cxxflags="-stdlib=libc++" linkflags="-stdlib=libc++" install
 
+RUN rm -rf /tmp/boost
+
 WORKDIR /src

@@ -14,6 +14,11 @@ DOCKER_ENV_CMD = docker exec -it clang-libcpp-boost-env
 
 up:
 	docker-compose up -d
+	@if [ "$$CIRCLECI" ]; \
+	then \
+	   echo "Workaround for CIRCLE CI as docker-compose mounts are unavailable"; \
+	   docker cp ./sample.cpp clang-libcpp-boost-env:/src; \
+	fi
 
 down:
 	docker-compose down

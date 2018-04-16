@@ -46,4 +46,6 @@ RUN cd /tmp/libcxx/build \
          .. \
       && make install
 
+RUN rm -rf /tmp/libcxx /tmp/libcxxabi
+
 WORKDIR /src
