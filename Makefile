@@ -15,6 +15,9 @@ DOCKER_ENV_CMD = docker exec -it clang-libcpp-boost-env
 up:
 	docker-compose up -d
 
+down:
+	docker-compose down
+
 sample: up sample.o
 	$(DOCKER_ENV_CMD) clang++ -std=c++2a -fcoroutines-ts -stdlib=libc++ -lc++abi -o sample sample.o
 

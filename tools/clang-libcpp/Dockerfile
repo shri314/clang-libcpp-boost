@@ -1,4 +1,4 @@
-FROM clang
+FROM shri314/clang
 
 RUN apt-get update && \
     apt-get install -y git cmake

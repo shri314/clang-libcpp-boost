@@ -13,13 +13,14 @@ jobs:
       steps:
          - checkout
          - setup_remote_docker:
-            version: 17.09.0-ce
+            version: 17.11.0-ce
          - run:
             name: Creating images
             command: |
                apk update
-               apk add make
-               make build
+               apk add --no-cache py-pip make
+               pip install docker-compose
+               make build sample-run down
          - deploy:
             name: Pushing images
             command: |

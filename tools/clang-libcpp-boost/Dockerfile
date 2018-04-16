@@ -1,4 +1,4 @@
-FROM clang-libcpp
+FROM shri314/clang-libcpp
 
 RUN apt-get update \
       && apt-get install -y python-dev
