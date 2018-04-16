@@ -20,7 +20,7 @@ services:
       build: tools/clang-libcpp-boost
       image: shri314/clang-libcpp-boost
       entrypoint: sleep infinity
-      container_name: dev-env
+      container_name: clang-libcpp-boost-env
       restart: always
       volumes:
          - .:/src
