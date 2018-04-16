@@ -19,7 +19,7 @@ jobs:
             command: |
                apk update
                apk add make
-               make images
+               make build
          - deploy:
             name: Pushing images
             command: |
