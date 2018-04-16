@@ -1,0 +1,45 @@
+version: 2
+
+############################################################################
+
+references:
+
+############################################################################
+
+jobs:
+   build-images:
+      docker:
+         - image: docker:git
+      steps:
+         - checkout
+         - setup_remote_docker:
+            version: 17.09.0-ce
+         - run:
+            name: Creating images
+            command: |
+               apk update
+               apk add make
+               make images
+         - deploy:
+            name: Pushing images
+            command: |
+               if [ "${CIRCLE_BRANCH}" == "master" ] || [ "${CIRCLE_BRANCH}" == "develop" ]
+               then
+                  echo "Docker User: $DOCKER_USER"
+                  docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
+                  make push
+               fi
+
+############################################################################
+
+workflows:
+   version: 2
+
+   main:
+      jobs:
+         - build-images:
+            filters:
+               branches:
+                  only:
+                     - master
+                     - develop

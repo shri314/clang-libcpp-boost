@@ -1,9 +1,10 @@
-# dev-env docker for clang + libc++ + boost
+# dev-env docker for: `clang` + `libc++` + `boost`
 
-### To build the docker images
+### To build the docker images:
 
-`make pre`
+`make images`
+`make push`
 
-### To build and run a sample source code
+### To run a sample built from c++ source code:
 
 `make run`
