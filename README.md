@@ -30,7 +30,7 @@ services:
          - .:/src
 ```
 
-#### 2. Create a Makefile (or use your equivalent build tool if you have one)
+#### 2. Create a Makefile (using make)
 ```
 DOCKER_ENV_CMD = docker exec -it clang-libcpp-boost-env
 
@@ -57,7 +57,6 @@ clean:
 
 #### 3. Put your sources in current directory (available as /src inside the container)
 ```
-$ cat sample.cpp
 #include <iostream>
 #include <optional>
 #include <string>
@@ -79,7 +78,7 @@ int main() {
 }
 ```
 
-#### 4. Put your sources in current directory (available as /src inside the container) and build
+#### 4. build
 ```
 make
 ```
