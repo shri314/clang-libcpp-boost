@@ -1,0 +1,17 @@
+--- boost/asio/detail/config.hpp.bak	2018-04-15 17:28:36.862872607 +0000
++++ boost/asio/detail/config.hpp	2018-04-15 17:28:42.319403229 +0000
+@@ -803,9 +803,11 @@
+ # if !defined(BOOST_ASIO_DISABLE_STD_EXPERIMENTAL_STRING_VIEW)
+ #  if defined(__clang__)
+ #   if (__cplusplus >= 201402)
+-#    if __has_include(<experimental/string_view>)
+-#     define BOOST_ASIO_HAS_STD_EXPERIMENTAL_STRING_VIEW 1
+-#    endif // __has_include(<experimental/string_view>)
++#    if !__has_include(<string_view>)
++#     if __has_include(<experimental/string_view>)
++#      define BOOST_ASIO_HAS_STD_EXPERIMENTAL_STRING_VIEW 1
++#     endif // __has_include(<experimental/string_view>)
++#    endif // !__has_include(<string_view>)
+ #   endif // (__cplusplus >= 201402)
+ #  endif // defined(__clang__)
+ #  if defined(__GNUC__)

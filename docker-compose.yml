@@ -1,0 +1,28 @@
+version: '3'
+services:
+   clang:
+      build: tools/clang
+      image: clang
+      entrypoint: sleep 10
+      restart: "no"
+      volumes:
+         - .:/src
+   clang-libcpp:
+      build: tools/clang-libcpp
+      image: clang-libcpp
+      entrypoint: sleep 10
+      restart: "no"
+      volumes:
+         - .:/src
+      depends_on:
+         - clang
+   dev-env:
+      build: tools/clang-libcpp-boost
+      image: clang-libcpp-boost
+      entrypoint: sleep infinity
+      container_name: dev-env
+      restart: always
+      volumes:
+         - .:/src
+      depends_on:
+         - clang-libcpp
