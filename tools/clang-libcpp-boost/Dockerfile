@@ -5,7 +5,7 @@ RUN apt-get update \
 
 RUN cd /tmp \
       && mkdir -p /tmp/boost \
-      && curl -s -L https://dl.bintray.com/boostorg/release/1.67.0/source/boost_1_67_0.tar.bz2 | tar -xjf - -C boost --strip-components 1
+      && curl -s -L https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_68_0.tar.bz2 | tar -xjf - -C boost --strip-components 1
 
 COPY b.patch /tmp/boost/
 

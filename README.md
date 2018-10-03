@@ -37,22 +37,22 @@ DOCKER_ENV_CMD = docker exec -it clang-libcpp-boost-env
 all: sample-run
 
 up:
-        docker-compose up -d
+	docker-compose up -d
 
 down:
-        docker-compose down
+	docker-compose down
 
 sample: up sample.o
-        $(DOCKER_ENV_CMD) clang++ -std=c++2a -fcoroutines-ts -stdlib=libc++ -lc++abi -o sample sample.o
+	$(DOCKER_ENV_CMD) clang++ -std=c++2a -fcoroutines-ts -stdlib=libc++ -lc++abi -o sample sample.o
 
 sample.o: up sample.cpp
-        $(DOCKER_ENV_CMD) clang++ -std=c++2a -fcoroutines-ts -stdlib=libc++ -c sample.cpp
+	$(DOCKER_ENV_CMD) clang++ -std=c++2a -fcoroutines-ts -stdlib=libc++ -c sample.cpp
 
 sample-run: sample
-        $(DOCKER_ENV_CMD) ./sample
+	$(DOCKER_ENV_CMD) ./sample
 
 clean:
-        rm -f sample sample.o
+	rm -f sample sample.o
 ```
 
 #### 3. Put your sources in current directory (available as /src inside the container)
