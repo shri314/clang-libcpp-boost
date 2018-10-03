@@ -17,7 +17,7 @@ RUN apt-get update && \
       libclang-common-8-dev \
       libclang1-8 \
       libfuzzer-8-dev \
-      libllvm7 \
+      libllvm8 \
       lld-8 \
       lldb-8 \
       llvm-8 \
