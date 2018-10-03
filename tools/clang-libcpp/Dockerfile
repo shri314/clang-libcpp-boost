@@ -19,7 +19,7 @@ RUN cd /tmp/libcxx/build \
          -DCMAKE_CXX_COMPILER=clang++ \
          -DCMAKE_C_COMPILER=clang \
          -DCMAKE_INSTALL_PREFIX=/usr \
-         -DLLVM_CONFIG_PATH=/usr/bin/llvm-config-7 \
+         -DLLVM_CONFIG_PATH=/usr/bin/llvm-config-8 \
          .. \
       && make install
 
@@ -30,7 +30,7 @@ RUN cd /tmp/libcxxabi/build \
          -DCMAKE_C_COMPILER=clang \
          -DCMAKE_CXX_COMPILER=clang++ \
          -DLIBCXXABI_LIBCXX_INCLUDES=../../libcxx/include \
-         -DLLVM_CONFIG_PATH=/usr/bin/llvm-config-7 \
+         -DLLVM_CONFIG_PATH=/usr/bin/llvm-config-8 \
          .. \
       && make install
 
@@ -42,7 +42,7 @@ RUN cd /tmp/libcxx/build \
          -DCMAKE_INSTALL_PREFIX=/usr \
          -DLIBCXX_CXX_ABI=libcxxabi \
          -DLIBCXX_CXX_ABI_INCLUDE_PATHS=../../libcxxabi/include \
-         -DLLVM_CONFIG_PATH=/usr/bin/llvm-config-7 \
+         -DLLVM_CONFIG_PATH=/usr/bin/llvm-config-8 \
          .. \
       && make install
 

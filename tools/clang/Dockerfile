@@ -9,28 +9,28 @@ RUN echo "deb http://apt.llvm.org/artful/ llvm-toolchain-$(lsb_release -cs) main
 
 RUN apt-get update && \
     apt-get install -y \
-      clang-7 \
-      clang-7-doc \
-      clang-format-7 \
-      clang-tools-7 \
-      libclang-7-dev \
-      libclang-common-7-dev \
-      libclang1-7 \
-      libfuzzer-7-dev \
+      clang-8 \
+      clang-8-doc \
+      clang-format-8 \
+      clang-tools-8 \
+      libclang-8-dev \
+      libclang-common-8-dev \
+      libclang1-8 \
+      libfuzzer-8-dev \
       libllvm7 \
-      lld-7 \
-      lldb-7 \
-      llvm-7 \
-      llvm-7-dev \
-      llvm-7-doc \
-      llvm-7-examples \
-      llvm-7-runtime \
-      python-clang-7
+      lld-8 \
+      lldb-8 \
+      llvm-8 \
+      llvm-8-dev \
+      llvm-8-doc \
+      llvm-8-examples \
+      llvm-8-runtime \
+      python-clang-8
 
-RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-7 1000
-RUN update-alternatives --install /usr/bin/c++     c++     /usr/bin/clang++-7 1000
-RUN update-alternatives --install /usr/bin/clang   clang   /usr/bin/clang-7   1000
-RUN update-alternatives --install /usr/bin/cc      cc      /usr/bin/clang-7   1000
-RUN update-alternatives --install /usr/bin/ld      ld      /usr/bin/ld.lld-7  1000
+RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-8 1000
+RUN update-alternatives --install /usr/bin/c++     c++     /usr/bin/clang++-8 1000
+RUN update-alternatives --install /usr/bin/clang   clang   /usr/bin/clang-8   1000
+RUN update-alternatives --install /usr/bin/cc      cc      /usr/bin/clang-8   1000
+RUN update-alternatives --install /usr/bin/ld      ld      /usr/bin/ld.lld-8  1000
 
 WORKDIR /src
