@@ -17,4 +17,7 @@ RUN cd /tmp/boost \
 
 RUN rm -rf /tmp/boost
 
+# Additional libs
+RUN apt-get install -y libssl-dev
+
 WORKDIR /src
