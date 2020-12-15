@@ -2,7 +2,7 @@ version: '3'
 services:
    clang-env:
       build: tools/clang
-      image: shri314/clang
+      image: shri314/clang:v12
       entrypoint: sleep 10
       restart: "no"
       user: ${CURRENT_UID}
@@ -10,7 +10,7 @@ services:
          - .:/src
    clang-libcpp-env:
       build: tools/clang-libcpp
-      image: shri314/clang-libcpp
+      image: shri314/clang-libcpp:v12-v10
       entrypoint: sleep 10
       restart: "no"
       user: ${CURRENT_UID}
@@ -20,9 +20,9 @@ services:
          - clang-env
    clang-libcpp-boost-env:
       build: tools/clang-libcpp-boost
-      image: shri314/clang-libcpp-boost
+      image: shri314/clang-libcpp-boost:v12-v10-v1_75_0
       entrypoint: sleep infinity
-      container_name: clang-libcpp-boost-env
+      container_name: clang-libcpp-boost-local-env
       restart: always
       user: ${CURRENT_UID}
       volumes:

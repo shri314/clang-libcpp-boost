@@ -1,4 +1,4 @@
-FROM shri314/clang-libcpp
+FROM shri314/clang-libcpp:v12-v10
 
 RUN apt-get update \
       && apt-get install -y python-dev

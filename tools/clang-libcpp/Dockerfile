@@ -1,4 +1,4 @@
-FROM shri314/clang
+FROM shri314/clang:v12
 
 #https://apt.llvm.org/
 
