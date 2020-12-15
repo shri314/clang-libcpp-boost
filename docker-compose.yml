@@ -5,6 +5,7 @@ services:
       image: shri314/clang
       entrypoint: sleep 10
       restart: "no"
+      user: ${CURRENT_UID}
       volumes:
          - .:/src
    clang-libcpp-env:
@@ -12,6 +13,7 @@ services:
       image: shri314/clang-libcpp
       entrypoint: sleep 10
       restart: "no"
+      user: ${CURRENT_UID}
       volumes:
          - .:/src
       depends_on:
@@ -22,6 +24,7 @@ services:
       entrypoint: sleep infinity
       container_name: clang-libcpp-boost-env
       restart: always
+      user: ${CURRENT_UID}
       volumes:
          - .:/src
       depends_on:

@@ -13,7 +13,7 @@ push:
 DOCKER_ENV_CMD = docker exec -it clang-libcpp-boost-env
 
 up:
-	docker-compose up -d
+	CURRENT_UID="$$(id -u):$$(id -g)" docker-compose up -d
 	@if [ "$$CIRCLECI" ]; \
 	then \
 	   echo "Workaround for CIRCLE CI as docker-compose mounts are unavailable"; \
@@ -24,10 +24,12 @@ down:
 	docker-compose down
 
 sample: up sample.o
-	$(DOCKER_ENV_CMD) clang++ -std=c++2a -fcoroutines-ts -stdlib=libc++ -lc++abi -o sample sample.o
+	#https://libcxx.llvm.org/docs/UsingLibcxx.html
+	$(DOCKER_ENV_CMD) clang++ -std=c++20 -fcoroutines-ts -stdlib=libc++ -L/usr/lib/llvm-10/lib -lc++abi -o sample sample.o
 
 sample.o: up sample.cpp
-	$(DOCKER_ENV_CMD) clang++ -std=c++2a -fcoroutines-ts -stdlib=libc++ -c sample.cpp
+	#https://libcxx.llvm.org/docs/UsingLibcxx.html
+	$(DOCKER_ENV_CMD) clang++ -std=c++20 -fcoroutines-ts -nostdinc++ -I/usr/lib/llvm-10/include/c++/v1 -c sample.cpp
 
 sample-run: sample
 	$(DOCKER_ENV_CMD) ./sample

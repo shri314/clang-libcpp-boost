@@ -5,15 +5,14 @@ RUN apt-get update \
 
 RUN cd /tmp \
       && mkdir -p /tmp/boost \
-      && curl -s -L https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_68_0.tar.bz2 | tar -xjf - -C boost --strip-components 1
-
-COPY b.patch /tmp/boost/
+      && curl -s -L https://dl.bintray.com/boostorg/release/1.75.0/source/boost_1_75_0.tar.bz2 | tar -xjf - -C boost --strip-components 1
 
 RUN cd /tmp/boost \
-      && patch -p0 < b.patch \
-      && ./bootstrap.sh --with-toolset=clang --prefix=/usr/ \
-      && ./b2 toolset=clang cxxflags="-stdlib=libc++" linkflags="-stdlib=libc++" stage \
-      && ./b2 toolset=clang cxxflags="-stdlib=libc++" linkflags="-stdlib=libc++" install
+      && ./bootstrap.sh --with-toolset=clang --prefix=/usr/
+
+RUN cd /tmp/boost \
+      && ./b2 toolset=clang stage \
+      && ./b2 toolset=clang install
 
 RUN rm -rf /tmp/boost
 
